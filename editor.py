@@ -3,6 +3,7 @@ from tkinter import *
 PROGRAM_NAME = "text editor"
 
 root = Tk()
+root.minsize(600, 400) 
 root.title(PROGRAM_NAME)
 
 # Top menu bar creating
@@ -71,7 +72,7 @@ edit_menu.add_command(label="Select All", accelerator='Ctrl + A', compound='left
 
 def about():
     pass
-
+ 
 def showhelp():
     pass
 
