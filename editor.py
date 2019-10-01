@@ -50,20 +50,25 @@ file_menu.add_separator()
 file_menu.add_command(label="Exit", accelerator='Ctrl+Q', compound='left', image=None, underline=0, command=root.destroy)
 
 # Textframe actions
+def undo():
+    content_text.event_generate("<<Undo>>")
+    return "break"
+
+def redo():
+    content_text.event_generate("<<Redo>>")
+    return 'break'
+
 def cut():
     content_text.event_generate("<<Cut>>")
-
-def undo_callback():
-    pass
-
-def redo_callback():
-    pass
+    return "break"
 
 def copy():
     content_text.event_generate("<<Copy>>")
+    return "break"
 
 def paste():
     content_text.event_generate("<<Paste>>")
+    return "break"
 
 def find_callback():
     pass
@@ -73,9 +78,9 @@ def select_all_callback():
 
 # Edit menu items
 edit_menu.add_command(label="Undo", accelerator='Ctrl + Z', 
-    compound='left', image=None, underline=0, command=undo_callback)
+    compound='left', image=undo_icon, underline=0, command=undo)
 edit_menu.add_command(label="Redo", accelerator='Ctrl + Y', 
-    compound='left', image=None, underline=0, command=redo_callback)
+    compound='left', image=redo_icon, underline=0, command=redo)
 edit_menu.add_separator()
 edit_menu.add_command(label="Cut", accelerator='Ctrl + X', 
     compound='left', image=cut_icon, underline=0, command=cut)
@@ -132,7 +137,7 @@ line_number_bar = Text(root, width=4, padx=2, takefocus=0, border=0, background=
 line_number_bar.pack(side='left', fill='y')
 
 # Textframe
-content_text = Text(root, wrap='word')
+content_text = Text(root, wrap='word', undo=1)
 content_text.pack(expand='yes', fill='both')
 scroll_bar = Scrollbar(content_text)
 content_text.configure(yscrollcommand=scroll_bar.set)
