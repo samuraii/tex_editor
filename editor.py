@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from tkinter import *
 
 PROGRAM_NAME = "text editor"
@@ -16,6 +18,16 @@ menu_bar.add_cascade(label='File', menu=file_menu)
 menu_bar.add_cascade(label='Edit', menu=edit_menu)
 menu_bar.add_cascade(label='View', menu=view_menu)
 menu_bar.add_cascade(label='About', menu=about_menu)
+
+# Icons
+new_file_icon = PhotoImage(file='icons/new_file.gif')
+open_file_icon = PhotoImage(file='icons/open_file.gif')
+save_file_icon = PhotoImage(file='icons/save.gif')
+cut_icon = PhotoImage(file='icons/cut.gif')
+copy_icon = PhotoImage(file='icons/copy.gif')
+paste_icon = PhotoImage(file='icons/paste.gif')
+undo_icon = PhotoImage(file='icons/undo.gif')
+redo_icon = PhotoImage(file='icons/redo.gif')
 
 def new_file():
     pass
@@ -37,13 +49,14 @@ file_menu.add_command(label="Save As..", accelerator='Ctrl+Shift+S', compound='l
 file_menu.add_separator()
 file_menu.add_command(label="Exit", accelerator='Ctrl+Q', compound='left', image=None, underline=0, command=root.destroy)
 
+# Textframe actions
+def cut():
+    content_text.event_generate("<<Cut>>")
+
 def undo_callback():
     pass
 
 def redo_callback():
-    pass
-
-def cut_callback():
     pass
 
 def copy_callback():
@@ -62,7 +75,8 @@ def select_all_callback():
 edit_menu.add_command(label="Undo", accelerator='Ctrl + Z', compound='left', image=None, underline=0, command=undo_callback)
 edit_menu.add_command(label="Redo", accelerator='Ctrl + Y', compound='left', image=None, underline=0, command=redo_callback)
 edit_menu.add_separator()
-edit_menu.add_command(label="Cut", accelerator='Ctrl + X', compound='left', image=None, underline=0, command=cut_callback)
+edit_menu.add_command(label="Cut", accelerator='Ctrl + X', 
+    compound='left', image=cut_icon, underline=0, command=cut)
 edit_menu.add_command(label="Copy", accelerator='Ctrl + C', compound='left', image=None, underline=0, command=copy_callback)
 edit_menu.add_command(label="Paste", accelerator='Ctrl + V', compound='left', image=None, underline=0, command=paste_callback)
 edit_menu.add_separator()
