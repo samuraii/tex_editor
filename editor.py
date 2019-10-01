@@ -59,11 +59,11 @@ def undo_callback():
 def redo_callback():
     pass
 
-def copy_callback():
-    pass
+def copy():
+    content_text.event_generate("<<Copy>>")
 
-def paste_callback():
-    pass
+def paste():
+    content_text.event_generate("<<Paste>>")
 
 def find_callback():
     pass
@@ -72,17 +72,23 @@ def select_all_callback():
     pass
 
 # Edit menu items
-edit_menu.add_command(label="Undo", accelerator='Ctrl + Z', compound='left', image=None, underline=0, command=undo_callback)
-edit_menu.add_command(label="Redo", accelerator='Ctrl + Y', compound='left', image=None, underline=0, command=redo_callback)
+edit_menu.add_command(label="Undo", accelerator='Ctrl + Z', 
+    compound='left', image=None, underline=0, command=undo_callback)
+edit_menu.add_command(label="Redo", accelerator='Ctrl + Y', 
+    compound='left', image=None, underline=0, command=redo_callback)
 edit_menu.add_separator()
 edit_menu.add_command(label="Cut", accelerator='Ctrl + X', 
     compound='left', image=cut_icon, underline=0, command=cut)
-edit_menu.add_command(label="Copy", accelerator='Ctrl + C', compound='left', image=None, underline=0, command=copy_callback)
-edit_menu.add_command(label="Paste", accelerator='Ctrl + V', compound='left', image=None, underline=0, command=paste_callback)
+edit_menu.add_command(label="Copy", accelerator='Ctrl + C', 
+    compound='left', image=copy_icon, underline=0, command=copy)
+edit_menu.add_command(label="Paste", accelerator='Ctrl + V', 
+    compound='left', image=paste_icon, underline=0, command=paste)
 edit_menu.add_separator()
-edit_menu.add_command(label="Find", accelerator='Ctrl + F', compound='left', image=None, underline=0, command=find_callback)
+edit_menu.add_command(label="Find", accelerator='Ctrl + F', 
+    compound='left', image=None, underline=0, command=find_callback)
 edit_menu.add_separator()
-edit_menu.add_command(label="Select All", accelerator='Ctrl + A', compound='left', image=None, underline=0, command=select_all_callback)
+edit_menu.add_command(label="Select All", accelerator='Ctrl + A', 
+    compound='left', image=None, underline=0, command=select_all_callback)
 
 def about():
     pass
