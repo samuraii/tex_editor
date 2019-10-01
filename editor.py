@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 from tkinter import *
 
 PROGRAM_NAME = "text editor"
@@ -42,10 +41,10 @@ def save_as_file():
     pass
 
 # File menu items
-file_menu.add_command(label="New", accelerator='Ctrl+N', compound='left', image=None, underline=0, command=new_file)
-file_menu.add_command(label="Open", accelerator='Ctrl+O', compound='left', image=None, underline=0, command=open_file)
-file_menu.add_command(label="Save", accelerator='Ctrl+S', compound='left', image=None, underline=0, command=save_file)
-file_menu.add_command(label="Save As..", accelerator='Ctrl+Shift+S', compound='left', image=None, underline=0, command=save_as_file)
+file_menu.add_command(label="New", accelerator='Ctrl+N', compound='left', image=new_file_icon, underline=0, command=new_file)
+file_menu.add_command(label="Open", accelerator='Ctrl+O', compound='left', image=open_file_icon, underline=0, command=open_file)
+file_menu.add_command(label="Save", accelerator='Ctrl+S', compound='left', image=save_file_icon, underline=0, command=save_file)
+file_menu.add_command(label="Save As...", accelerator='Ctrl+Shift+S', compound='left', image=None, underline=0, command=save_as_file)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", accelerator='Ctrl+Q', compound='left', image=None, underline=0, command=root.destroy)
 
